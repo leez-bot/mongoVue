@@ -2,8 +2,8 @@ const mongoose = require('mongoose') // mongoose是用来连接操作mongoDB的�
 const { Schema } = mongoose
 
 const produtSchema = new Schema({
-  "name": String,
-  "age": Number,
+  'name': String,
+  'age': Number
 })
 
 // module.exports = mongoose.model('Users', produtSchema)

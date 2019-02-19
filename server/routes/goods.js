@@ -16,7 +16,6 @@ mongoose.connection.on('disconnected', () => {
   console.log('mongoDB数据库断开连接')
 })
 
-
 router.get('/', (req, res, next) => {
   // res.send('拿到了商品列表数据了')
   // 查询数据库
@@ -38,4 +37,4 @@ router.get('/', (req, res, next) => {
   })
 })
 
-module.exports = router;
+module.exports = router
