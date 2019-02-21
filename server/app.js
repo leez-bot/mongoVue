@@ -19,6 +19,21 @@ app.engine('.html', ejs.__express)
 app.set('view engine', 'html')
 // app.set('view engine', 'jade');
 
+// 启用本地文件访问
+// var options = {
+//   dotfiles: 'ignore',
+//   etag: false,
+//   extensions: ['htm', 'html'],
+//   index: false,
+//   maxAge: '1d',
+//   redirect: false,
+//   setHeaders: function (res, path, stat) {
+//     res.set('x-timestamp', Date.now())
+//   }
+// }
+
+// app.use(express.static('public', options))
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
