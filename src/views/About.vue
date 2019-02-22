@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import { handleResponse } from '../util/util.js'
 export default {
   data () {
     return {
@@ -52,7 +53,7 @@ export default {
       axios.get('/users', {
         params: this.filter
       }).then(res => {
-        this.list = res.data.result.list
+        this.list = handleResponse(res).list
       })
     },
     submit () {

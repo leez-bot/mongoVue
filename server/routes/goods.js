@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Goods = require('../models/goods')
 
 // 连接数据库
-mongoose.connect('mongodb://127.0.0.1:27017/test_db')
+mongoose.connect('mongodb+srv://lizheng:lizheng1255@testdb-h9w57.mongodb.net/testDB')
 
 mongoose.connection.on('connected', () => {
   console.log('mongoDB数据库连接成功')

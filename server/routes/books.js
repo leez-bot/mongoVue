@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
 // const mongoose = require('mongoose')
-const Users = require('../models/users')
+const Books = require('../models/books')
 
-// 连接数据库
-// mongoose.connect('mongodb://127.0.0.1:27017/test_db') // 连接本地mongo数据库
 // mongoose.connect('mongodb+srv://lizheng:lizheng1255@testdb-h9w57.mongodb.net/testDB') // 连接mongoDB Altas数据库
 
 // mongoose.connection.on('connected', () => {
@@ -38,46 +36,19 @@ router.get('/', (req, res, next) => {
   // res.send('拿到了商品列表数据了')
   // 查询数据库
   // const param = req.params()
-  const { page, pageSize, sort } = req.query // 查询条件
+  const { page = 1, pageSize = 10 } = req.query // 查询条件
   // console.log(req.query)
   const skip = (Number(page) - 1) * Number(pageSize) // 需要跳过的条数
   // 先查询所有，再跳过前面页码所有数据，只查找当前页码，并limit限制条数
-  const userModel = Users.find({
-    // 限定条件，年龄大于0 ，小于等于100
-    age: {
-      $gt: 0,
-      $lte: 100
-    }
-  }).skip(skip).limit(Number(pageSize))
-  userModel.sort({ 'age': Number(sort) })
+  const BooksModel = Books.find().skip(skip).limit(Number(pageSize))
   // 条件查询
-  userModel.exec((err, doc) => {
+  BooksModel.exec((err, doc) => {
     handleCallback(res, err, doc)
   })
   // 以下是普通查询
   // Users.find({}, (err, doc) => {
   //   handleCallback(res, err, doc)
   // })
-})
-
-// 添加用户
-router.post('/addUser', (req, res, next) => {
-  const _user = req.body
-  // console.log(_user)
-  const user = new Users(_user)
-  user.save((err) => {
-    handleCallback(res, err)
-  })
-})
-
-// 删除用户
-router.post('/deleteUser', (req, res, next) => {
-  console.log(req.body)
-  Users.remove({
-    _id: req.body.id
-  }, err => {
-    handleCallback(res, err)
-  })
 })
 
 module.exports = router
