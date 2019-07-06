@@ -4,16 +4,23 @@
     <p>
       <button @click="toggleSort">更改排序方式</button>
     </p>
-    <p v-for="item in list" v-bind:key="item._id" @click="deleteItem(item._id)">
+    <p v-for="item in list"
+       v-bind:key="item._id"
+       @click="deleteItem(item._id)">
       {{ item.name }} : {{ item.age }}
     </p>
     <p>
       每页条数：
-      <input type="number" name="" id="" v-model="filter.pageSize">
+      <input type="number"
+             name=""
+             id=""
+             v-model="filter.pageSize">
     </p>
     <button @click="getUsers">查询</button>
-    <p>姓名：<input type="text" v-model="user.name"></p>
-    <p>年龄：<input type="number" v-model="user.age"></p>
+    <p>姓名：<input type="text"
+             v-model="user.name"></p>
+    <p>年龄：<input type="number"
+             v-model="user.age"></p>
     <button @click="submit">提交</button>
   </div>
 </template>
