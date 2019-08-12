@@ -20,6 +20,7 @@
         </p>
       </div>
       <hr>
+      <!-- 购物车子组件 -->
       <ChildComponent />
     </div>
   </div>
